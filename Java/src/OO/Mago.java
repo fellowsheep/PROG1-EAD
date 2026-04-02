@@ -3,6 +3,8 @@ public class Mago {
     private String nome;
     private int idade;
     private String escola;
+    private int pontosSaude;
+    private boolean vivo;
 
     // Construtor Padrão
     public Mago() {
@@ -10,6 +12,7 @@ public class Mago {
         this.idade = 0;
         this.escola = "Nenhuma";
         System.out.println("Mago padrão criado!");
+        this.inicializarAtributosPadrao();
     }
 
     // Construtor com Parâmetros (Sobrecarga)
@@ -18,6 +21,14 @@ public class Mago {
         this.idade = idade;
         this.escola = escola;
         System.out.println("Mago " + nome + " criado com sucesso!");
+        this.inicializarAtributosPadrao();
+    }
+
+    // Método privado: só pode ser chamado por outros métodos da classe
+    private void inicializarAtributosPadrao()
+    {
+        this.pontosSaude = 100;
+        this.vivo = true;
     }
 
     // Métodos (Comportamentos)
@@ -31,5 +42,17 @@ public class Mago {
 
     public void invocarMagia() {
         System.out.println(nome + " está invocando uma magia da escola " + escola + "!");
+    }
+
+    // Método(s) de set (alterar valores dos atributos privados)
+    public void setNome(String nome)
+    {
+        this.nome = nome;
+    }
+
+    // Métodos(s) de get (retornam o valor/ref dos atributos)
+    public int getPontosSaude()
+    {
+        return pontosSaude;
     }
 }
