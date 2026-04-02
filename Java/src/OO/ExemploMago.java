@@ -7,7 +7,8 @@ public class ExemploMago {
         magoGenerico.setNome("Frieren");
         magoGenerico.falar();
         System.out.println("Pontos de saúde:" + magoGenerico.getPontosSaude());
-        int pontosSaude = magoGenerico.getPontosSaude(); //pode armazenar o valor em uma variável local
+        int ptsSaudeEquipe = 0;
+        ptsSaudeEquipe += magoGenerico.getPontosSaude(); //pode armazenar o valor em uma variável local
         // magoGenerico.inicializarAtributosPadrao(); ERRADO! Este método é privado!
 
         System.out.println("---");
@@ -20,7 +21,7 @@ public class ExemploMago {
 
         System.out.println("---");
 
-        Mago g = new Mago("Gandalf",300,"Tolkien");
+        Mago g = new Mago("Gandalf",300,"Istari");
         g.andar();
         g.falar();
         g.invocarMagia();
