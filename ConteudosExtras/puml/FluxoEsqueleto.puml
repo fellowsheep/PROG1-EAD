@@ -1,0 +1,25 @@
+puml
+@startuml cicloDeVida
+skinparam defaultTextAlignment center
+
+start
+:<b>inicializar()</b>
+Carrega as configurações iniciais;
+
+repeat :<b>executar()</b>\nLoop Principal;
+  :Mostra Menu de Opções;
+  :Lê a Opção do Usuário;
+  
+  if (Opção válida?) then (Sim)
+    :Executa a tarefa correspondente;
+  else (Não)
+    :Exibe "Opção Inválida!";
+  endif
+  
+repeat while (Deseja sair? (Opção != 3)) is (Não)
+
+-> Sim;
+:<b>finalizar()</b>
+Salva os dados e encerra;
+stop
+@enduml
