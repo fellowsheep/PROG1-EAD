@@ -343,7 +343,7 @@ class Druida {
 ```
 ---
 
-## ⚖️ 5) Comparativo rápido
+## 5) Comparativo rápido
 
 | Relação    |  Diagrama | Frase mental | Ciclo de vida | Exemplo                      |
 | ---------- | --------: | ------------ | ------------- | ---------------------------- |
@@ -365,7 +365,7 @@ Em UML, é representada por uma **seta tracejada (`..>`)**, indicando que uma mu
 
 ---
 
-### Diagrama simples (A ..> B)
+### Diagrama UML
 
 ![alt text](img/Dependencia.svg)
 
@@ -383,7 +383,7 @@ A ..> B : usa temporariamente
 Um **Mago** pode pedir ajuda a um **Feiticeiro** para identificar um artefato mágico.
 O Mago **não possui** um Feiticeiro como atributo da classe; ele apenas **depende temporariamente** dele para realizar uma tarefa específica.
 
-### Diagrama UML (Dependência)
+### Diagrama UML 
 
 ![alt text](img/DependenciaMago.svg)
 
