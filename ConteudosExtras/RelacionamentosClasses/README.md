@@ -286,7 +286,7 @@ O relacionamento entre **Druida** e **Familiar** pode ser modelado de formas dif
 * **Associação/Agregação:** o Druida se **alia** a um Familiar já instanciado no mundo (ciclos de vida independentes, vínculo estrutural maleável).
 * **Composição:** o Druida **possui** um FamiliarVinculado que nasce e morre magicamente com ele (ciclo de vida estritamente compartilhado).
 
-### 4.1 Associação Simples / Agregação (Aliança permanente - vidas independentes)
+### 4.1 Agregação (Aliança permanente - vidas independentes)
 
 O Druida tem um atributo para o Familiar, mas ele vem de fora. Se o vínculo for desfeito, o Familiar continua existindo livremente na floresta.
 
