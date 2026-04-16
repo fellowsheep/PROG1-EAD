@@ -279,62 +279,82 @@ public class Main {
 ```
 ---
 
-## 4) Estudo de Caso: Druida e Familiar (Associação vs. Composição)
+## 4) Estudo de Caso: Druida e Familiar (Agregação vs. Composição)
 
 O relacionamento entre **Druida** e **Familiar** pode ser modelado de formas diferentes, dependendo das regras do seu jogo:
 
-* **Associação/Agregação:** o Druida **invoca** um Familiar já instanciado de fora (ciclos de vida independentes).
-* **Composição:** o Druida **possui** um FamiliarVinculado que é instanciado pelo próprio Druida (ciclo de vida compartilhado).
+* **Associação/Agregação:** o Druida se **alia** a um Familiar já instanciado no mundo (ciclos de vida independentes, vínculo estrutural maleável).
+* **Composição:** o Druida **possui** um FamiliarVinculado que nasce e morre magicamente com ele (ciclo de vida estritamente compartilhado).
 
-### 4.1 Associação Simples / Agregação
+### 4.1 Associação Simples / Agregação (Aliança permanente - vidas independentes)
 
-![alt text](img/AssociacaoDruida.svg)
+O Druida tem um atributo para o Familiar, mas ele vem de fora. Se o vínculo for desfeito, o Familiar continua existindo livremente na floresta.
 
-```puml
-@startuml associacaoDruida
-class Druida
-class Familiar
-Druida --> Familiar : invoca
-@enduml
-```
+![alt text](img/AgregacaoDruida.svg)
 
-### Código Java (Independência)
+### Código Java 
 
 ```java
 class Familiar {
     private String nome;
-    public Familiar(String n) { this.nome = n; }
-    public void responder() { System.out.println(nome + " atende ao chamado."); }
+    
+    public Familiar(String n) { 
+        this.nome = n; 
+    }
+    
+    public void responder() { 
+        System.out.println(nome + " uiva em resposta ao chamado!"); 
+    }
 }
 
 class Druida {
-    public void invocar(Familiar f) {
-        if (f != null) {
+    // Vínculo estrutural (Atributo), garantindo que seja Associação/Agregação
+    private Familiar familiarAliado; 
+    
+    public Druida() {
+        this.familiarAliado = null; // Começa sem familiar
+    }
+
+    // O Druida forma o vínculo com um familiar que já existe
+    public void fazerAlianca(Familiar f) {
+        this.familiarAliado = f;
+        System.out.println("O Druida formou uma aliança com o familiar.");
+    }
+
+    public void invocar() {
+        if (this.familiarAliado != null) {
             System.out.println("Druida entoa um canto antigo...");
-            f.responder();
+            this.familiarAliado.responder();
+        } else {
+            System.out.println("O Druida está sozinho na floresta.");
         }
     }
 }
 
-// Main
-// Familiar familiar = new Familiar("Lobo das Brumas");
-// Druida druida = new Druida();
-// druida.invocar(familiar);
-```
+public class Main {
+    public static void main(String[] args) {
+        // 1. O familiar nasce solto na natureza (Independente)
+        Familiar lobo = new Familiar("Lobo das Brumas");
+        
+        // 2. O Druida é criado
+        Druida druida = new Druida();
+        
+        // 3. A Associação é formada
+        druida.fazerAlianca(lobo);
+        druida.invocar();
+        
+        // Se o druida sumir (druida = null), o lobo continua existindo na memória!
+        druida = null; 
+    }
+}
 
 ### 4.2 Composição
 
+O Druida é inteiramente responsável pelo Familiar. A vida do Familiar é vinculada no nascimento do Druida (magicamente o Familiar é criado quando o druida nasce).
+
 ![alt text](img/ComposicaoDruida.svg)
 
-```puml
-@startuml composicaoDruida
-class Druida
-class FamiliarVinculado
-Druida *-- FamiliarVinculado : vinculo magico
-@enduml
-```
-
-### Código Java (Composição - Vida Compartilhada)
+### Código Java (Composição - vidas compartilhadas)
 
 ```java
 class FamiliarVinculado {
