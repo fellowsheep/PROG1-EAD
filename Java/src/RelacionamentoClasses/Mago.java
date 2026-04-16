@@ -27,11 +27,13 @@ class Item {
 }
 
 class Mago {
-    private Item itemEquipado;
+    private Magia magiaConhecida; //relação par-a-par - magia não é que faz parte, o mago usa
+    private Item itemEquipado; // relação todo/parte, mas com ciclos de vida separados
     private String nome;
 
     public Mago(String nome)
     {
+        magiaConhecida = null;
         itemEquipado = null;
         this.nome = nome;
     }
@@ -41,10 +43,19 @@ class Mago {
         System.out.println(nome + " diz: 'Pelas barbas de Merlin!'");
     }
 
-    // A associação ocorre aqui: o Mago recebe a Magia para interagir com ela
-    public void lancar(Magia magia) {
-        System.out.println("Mago prepara o feitiço...");
-        magia.executar();
+    // O Mago aprende a magia, criando o vínculo
+    public void aprenderMagia(Magia magia) {
+        this.magiaConhecida = magia;
+        System.out.println("O Mago memorizou o feitiço.");
+    }
+
+    public void lancarMagia() {
+        if (this.magiaConhecida != null) {
+            System.out.println("Mago prepara o feitiço...");
+            this.magiaConhecida.executar();
+        } else {
+            System.out.println("O Mago não sabe nenhuma magia no momento!");
+        }
     }
 
     // O Mago recebe o item de uma fonte externa - Exemplo de agregação!!!
@@ -64,6 +75,8 @@ class Mago {
     
     public void lancarMagiaForte() {
         int poderBase = 10;
+        if (magiaConhecida != null)
+            poderBase += 10;
         if (itemEquipado != null) {
             itemEquipado.brilhar();
             int poderTotal = poderBase + itemEquipado.bonusMagico;

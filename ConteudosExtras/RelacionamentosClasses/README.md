@@ -66,10 +66,22 @@ class Magia {
 }
 
 class Mago {
-    // A associação ocorre aqui: o Mago recebe a Magia para interagir com ela
-    public void lancar(Magia magia) {
-        System.out.println("Mago prepara o feitiço...");
-        magia.executar();
+    // A Associação Estrutural ocorre aqui: o Mago "conhece" a magia
+    private Magia magiaConhecida; 
+
+    // O Mago aprende a magia, criando o vínculo
+    public void aprenderMagia(Magia magia) {
+        this.magiaConhecida = magia;
+        System.out.println("O Mago memorizou o feitiço.");
+    }
+
+    public void lancarMagia() {
+        if (this.magiaConhecida != null) {
+            System.out.println("Mago prepara o feitiço...");
+            this.magiaConhecida.executar();
+        } else {
+            System.out.println("O Mago não sabe nenhuma magia no momento!");
+        }
     }
 }
 
@@ -78,7 +90,8 @@ public class Main {
         Mago gandalf = new Mago();
         Magia bolaDeFogo = new Magia("Bola de Fogo");
         
-        gandalf.lancar(bolaDeFogo);
+        gandalf.aprenderMagia(bolaDeFogo);
+        gandalf.lancarMagia();
     }
 }
 ```
