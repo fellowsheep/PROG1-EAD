@@ -347,6 +347,7 @@ public class Main {
         druida = null; 
     }
 }
+```
 
 ### 4.2 Composição
 
