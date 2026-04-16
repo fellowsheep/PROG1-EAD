@@ -1,4 +1,4 @@
-package RelacionmentoClasses;
+package EsqueletoAplicacao;
 import java.util.Scanner;
 
 public class Main {  //Classe gerenciadora da aplicação
