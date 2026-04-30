@@ -1,3 +1,8 @@
+package ExemploHeranca;
+
+// Esta classe foi criada apenas para exemplificar herança multinível
+// Personagem --> Mago --> MagoBranco
+
 public class Personagem {
     protected String nome;
     protected int idade;

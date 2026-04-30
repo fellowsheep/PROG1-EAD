@@ -1,3 +1,5 @@
+package OO;
+
 public class Mago {
     // Atributos (privados para garantir o encapsulamento)
     private String nome;

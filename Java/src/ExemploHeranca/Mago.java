@@ -1,9 +1,11 @@
-public class Mago2 extends Personagem {
+package ExemploHeranca;
+
+public class Mago extends Personagem {
     // Atributos (privados para garantir o encapsulamento)
     protected String escola;
     
     // Construtor Padrão
-    public Mago2() {
+    public Mago() {
         this.nome = "Desconhecido";
         this.idade = 0;
         this.escola = "Nenhuma";
@@ -12,7 +14,7 @@ public class Mago2 extends Personagem {
     }
 
     // Construtor com Parâmetros (Sobrecarga)
-    public Mago2(String nome, int idade, String escola) {
+    public Mago(String nome, int idade, String escola) {
         this.nome = nome;
         this.idade = idade;
         this.escola = escola;

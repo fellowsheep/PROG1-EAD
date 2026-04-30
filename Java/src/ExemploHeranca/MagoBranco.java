@@ -1,5 +1,5 @@
-
-public class MagoBranco extends Mago2 {
+package ExemploHeranca;
+public class MagoBranco extends Mago {
 
     private int poderCura;
 

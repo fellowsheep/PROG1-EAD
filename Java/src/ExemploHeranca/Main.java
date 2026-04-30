@@ -1,10 +1,9 @@
-import java.util.Scanner;
+package ExemploHeranca;
 
 public class Main {  //Classe gerenciadora da aplicação
     // Atributos 
-    private static Scanner input;
     private static MagoBranco mb;
-    private static Mago2 m, m2;
+    private static Mago m, m2;
 
     // Métodos
     // Entry Point- método main -- APENAS 1 por programa
@@ -23,25 +22,28 @@ public class Main {  //Classe gerenciadora da aplicação
 
     private static void inicializar() {
         System.out.println("Iniciando o programa....");
-        mb = new MagoBranco("Gandalf",300,"A");
-        m = new Mago2("Harry Potter",17,"Hogwarts");
+        mb = new MagoBranco("Gandalf",300,"Istari");
+        m = new Mago("Harry Potter",17,"Hogwarts");
         //Polimorfismo: conceito de upcasting
-        m2 = new MagoBranco("Saruman",400,"A");
+        m2 = new MagoBranco("Saruman",400,"Istari");
     }
 
     private static void executar() {
         mb.falar();
         m.falar();
+        //m.curar(); --> ERRO!!!!
+
         mb.curar();
-        //m.curar();
         m2.falar();
         m2.andar();
         m2.invocarMagia();
-        //m2.curar();
+        
+        //m2.curar(); ---> ERRO!!! 
         //Resolve-se com  um downcasting
         MagoBranco tmp = (MagoBranco) m2;
         tmp.curar();
 
+        //Mostrando que todos herdam de Personagem (multinível)
         m.checarStatus();
         mb.checarStatus();
         m2.checarStatus();
