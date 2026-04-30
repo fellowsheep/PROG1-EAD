@@ -1,7 +1,7 @@
 public class ExemploMago {
     public static void main(String[] args) {
         // Usando construtor padrão
-        Mago magoGenerico = new Mago();
+        Mago2 magoGenerico = new Mago2();
         magoGenerico.andar();
         // magoGenerico.nome = "Frieren"; ERRADO! Atributo nome é privado
         magoGenerico.setNome("Frieren");
@@ -14,14 +14,14 @@ public class ExemploMago {
         System.out.println("---");
 
         // Usando construtor com parâmetros
-        Mago hp = new Mago("Harry Potter", 17, "Hogwarts");
+        Mago2 hp = new Mago2("Harry Potter", 17, "Hogwarts");
         hp.andar();
         hp.falar();
         hp.invocarMagia();
 
         System.out.println("---");
 
-        Mago g = new Mago("Gandalf",300,"Istari");
+        Mago2 g = new Mago2("Gandalf",300,"Istari");
         g.andar();
         g.falar();
         g.invocarMagia();
