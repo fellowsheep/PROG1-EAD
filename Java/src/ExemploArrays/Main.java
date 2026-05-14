@@ -42,8 +42,52 @@ public class Main {
         i++;
     }
     System.out.println();
+    
+
+    int[] vnumeros = {10, 20, 30};
+    int soma = 0;
+    
+    for(i = 0; i<3; i++)
+    {
+        soma = soma + vnumeros[i];
+        System.out.println("i = " + i + " vnumeros[" + i + "] = " + vnumeros[i] + " soma = " + soma);
     }
 
-    
-    
+    int[] array = new int[15];
+    int[] arrayPares = new int[15];
+    int[] arrayImpares = new int[15];
+    int nPares = 0, nImpares = 0;
+    for (i = 0; i < array.length; i++)
+    {
+        array[i] = rand.nextInt(100);
+        System.out.print(array[i] + " ");
+        
+        if (array[i] % 2 == 0) //se o resto da divisão for zero é par
+        {
+            arrayPares[nPares] = array[i];
+            nPares = nPares + 1; //nPares++
+        }
+        else //se for impar
+        {
+            arrayImpares[nImpares] = array[i];
+            nImpares = nImpares + 1; 
+        }
+    }
+    System.out.println();
+
+    System.out.println("Nro de pares: " + nPares);
+    for(i = 0; i < nPares; i++)
+    {
+        System.out.print(arrayPares[i] + " ");
+    }
+    System.out.println();
+    System.out.println("Nro de impares: " + nImpares);
+    for(i = 0; i < nImpares; i++)
+    {
+        System.out.print(arrayImpares[i] + " ");
+    }
+     System.out.println();
+
+    }
+   
 }
